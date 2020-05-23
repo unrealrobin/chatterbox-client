@@ -21,10 +21,11 @@ var App = {
 
     Parse.readAll((data) => {
       // examine the response from the server request:
-      console.log(data, "this array");
-      //debugger;
+      console.log("Our Data:", data);
+      MessagesView.initialize(data);
       MessagesView.renderMessage(data);
       RoomsView.initialize(data);
+      // Friends.initialize();
       callback();
     });
   },

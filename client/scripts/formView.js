@@ -1,6 +1,8 @@
 var FormView = {
 
   $form: $('form'),
+  $message: $('#message'),
+  $selector: $('select'),
 
   initialize: function() {
     FormView.$form.on('submit', FormView.handleSubmit);
@@ -9,11 +11,11 @@ var FormView = {
   handleSubmit: function(event) {
     // Stop the browser from submitting the form
     event.preventDefault();
-
+    console.log("Message: ", FormView.$message[0].value)
     var postObject = {
       username: App.username,
-      text: $('#message').value,
-      roomname: "lobby"
+      text: FormView.$message[0].value,
+      roomname: FormView.$selector[0].value
     }
 
     Parse.create(postObject, callback = ()=>{console.log('Message posted successfully!')}, errorCB = null);
